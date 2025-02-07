@@ -1,13 +1,25 @@
 import React from "react";
-import styles from "./FoodImage.module.css";
+import styles from "./FoodImage.module.scss";
 
 type FoodImageProps = {
   src: string;
-  alt?: string;
+  isSelected?: boolean;
+  onClick?: () => void;
 };
 
-const FoodImage: React.FC<FoodImageProps> = ({ src, alt = "Food Image" }) => {
-  return <img className={styles.image} src={src} alt={alt} />;
+const FoodImage: React.FC<FoodImageProps> = ({
+  src,
+  onClick,
+  isSelected,
+}) => {
+  return (
+    <img
+      className={`${styles.image} ${isSelected ? styles.selected : ""}`}
+      src={src}
+      alt="Food Image"
+      onClick={onClick}
+    />
+  );
 };
 
 export default FoodImage;

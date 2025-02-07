@@ -1,16 +1,26 @@
-import React from "react";
 import FoodImage from "../FoodImage/FoodImage";
-import styles from "./FoodGrid.module.css";
+import style from "./FoodGrid.module.scss";
 
 type FoodGridProps = {
-  images: string[];
+  foodList: Array<string>;
+  onSelect?: (url: string) => void;
+  selected?: string | null;
 };
 
-const FoodGrid: React.FC<FoodGridProps> = ({ images }) => {
+const FoodGrid: React.FC<FoodGridProps> = ({
+  foodList,
+  onSelect,
+  selected,
+}) => {
   return (
-    <div className={styles.grid}>
-      {images.map((src) => (
-        <FoodImage key={src} src={src} />
+    <div className={style.grid}>
+      {foodList.map((src, index) => (
+        <FoodImage
+          key={index}
+          src={src}
+          onClick={() => onSelect && onSelect(src)}
+          isSelected={selected === src}
+        />
       ))}
     </div>
   );

@@ -1,0 +1,43 @@
+@use '../../styles/colors' as *;
+@use '../../styles/sizes' as *;
+
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  justify-items: center;
+  margin: 30px;
+
+  @media (min-width: $medium) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  @media (min-width: $large) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+}
+
+.imageContainer {
+  border: 2px solid $disabled;
+  padding: 10px;
+  cursor: pointer;
+  transition: border-color 0.3s;
+
+  &.selected {
+    border-color: $active;
+  }
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.error {
+  color: $warning;
+  margin: 10px 0;
+}
