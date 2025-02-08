@@ -155,7 +155,6 @@ package-lock.json
 
 # TypeScript config (only if they are local)
 tsconfig.app.json
-tsconfig.json
 tsconfig.node.json
 
 # ESLint config (only if project doesn’t enforce a shared config)
