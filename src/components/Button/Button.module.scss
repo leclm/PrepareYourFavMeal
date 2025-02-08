@@ -11,6 +11,7 @@ button {
 
   &:disabled {
     background-color: $disabled;
+    color: $dark-gray;
     cursor: not-allowed;
   }
 }
