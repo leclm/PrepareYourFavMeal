@@ -23,9 +23,8 @@ const Home: React.FC = () => {
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${categorie}`)
       .then((response) => response.json())
       .then((data) => {
-        const shuffledImages = Array.from(
-          data.meals as { strMealThumb: string }[]
-        )
+        const meals = Array.isArray(data.meals) ? data.meals : [];
+        const shuffledImages = meals
           .sort(() => Math.random() - 0.5)
           .slice(0, 6)
           .map((meal: { strMealThumb: string }) => meal.strMealThumb);
@@ -34,7 +33,7 @@ const Home: React.FC = () => {
       })
       .catch((error) => console.error("Error:", error))
       .finally(() => {
-        setTimeout(() => setLoading(false), 2000);
+        setLoading(false);
       });
   };
 
@@ -60,14 +59,19 @@ const Home: React.FC = () => {
     <>
       {step < categories.length ? (
         loading ? (
-          <p>Loading the best dishes you've ever seen...</p>
+          <p data-testid="loading-message">
+            Loading the best dishes you've ever seen...
+          </p>
         ) : (
           <>
-            <h3>Choose your fav dish from the •{categories[step]}• section</h3>
+            <h3 data-testid="category-text">
+              Choose your fav dish from the •{categories[step]}• section
+            </h3>
             <FoodGrid
               foodList={imagesUrls}
               onSelect={handleSelectImage}
               selected={selectedImage}
+              data-testid="grid"
             />
 
             <Button
@@ -80,7 +84,7 @@ const Home: React.FC = () => {
       ) : (
         <>
           <h2>Here are the amazing dishes you chose!</h2>
-          <FoodGrid foodList={selectedImages} />
+          <FoodGrid foodList={selectedImages} data-testid="grid-selected" />
         </>
       )}
     </>

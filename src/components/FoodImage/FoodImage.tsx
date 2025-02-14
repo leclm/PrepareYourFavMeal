@@ -18,6 +18,7 @@ const FoodImage: React.FC<FoodImageProps> = ({
       src={src}
       alt="Food Image"
       onClick={onClick}
+      data-testid="food-image"
     />
   );
 };

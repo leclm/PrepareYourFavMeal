@@ -9,4 +9,7 @@ module.exports = {
   collectCoverage: true,
   coverageDirectory: 'coverage',
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  moduleNameMapper: {
+    "\\.(scss|sass|css)$": "identity-obj-proxy"
+  },
 };

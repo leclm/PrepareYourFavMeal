@@ -7,13 +7,14 @@ type ButtonProps = {
   onClick?: () => void;
 };
 
-const Button: React.FC<ButtonProps> = ({
-  text,
-  onClick,
-  disabled = false,
-}) => {
+const Button: React.FC<ButtonProps> = ({ text, onClick, disabled = false }) => {
   return (
-   <button onClick={onClick} className={disabled ? styles.disabled : styles.button} disabled={disabled}>
+    <button
+      onClick={onClick}
+      className={disabled ? styles.disabled : styles.button}
+      disabled={disabled}
+      data-testid="button"
+    >
       {text}
     </button>
   );
