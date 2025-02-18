@@ -4,30 +4,36 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
   justify-items: center;
-  margin: 30px;
+  justify-content: center;
+  max-width: 200px;
+  margin: 0 auto 30px;
+  padding: 20px;
+  border-radius: 10px;
+
 
   @media (min-width: $medium) {
     grid-template-columns: repeat(2, 1fr);
+    max-width: 600px;
     gap: 30px;
   }
 
   @media (min-width: $large) {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    max-width: 600px;
   }
 }
 
 .imageContainer {
-  border: 2px solid $disabled;
   padding: 10px;
   cursor: pointer;
   transition: border-color 0.3s;
 
   &.selected {
-    border-color: $active;
+    border-color: $blue;
   }
 }
 
@@ -35,9 +41,4 @@
   width: 100%;
   height: auto;
   border-radius: 8px;
-}
-
-.error {
-  color: $warning;
-  margin: 10px 0;
 }

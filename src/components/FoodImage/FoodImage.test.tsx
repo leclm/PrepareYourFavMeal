@@ -7,6 +7,7 @@ describe("FoodImage Component", () => {
   test("should render the FoodImage component", async () => {
     const mockFoodImage = {
       src: "https://example.com/image1.png",
+      alt: "Alt text image 1"
     };
 
     render(<FoodImage {...mockFoodImage} />);
@@ -17,6 +18,7 @@ describe("FoodImage Component", () => {
     const mockFoodImage = {
       src: "https://example.com/image1.png",
       onClick: mockOnClick,
+      alt: "Alt text image 1"
     };
 
     const { rerender } = render(
@@ -45,6 +47,7 @@ describe("FoodImage Component", () => {
     const mockFoodImage = {
       src: "https://example.com/image1.png",
       onClick: mockOnClick,
+      alt: "Alt text image 1"
     };
     const { rerender } = render(
       <FoodImage {...mockFoodImage} isSelected={false} />

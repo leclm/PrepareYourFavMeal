@@ -2,9 +2,9 @@ import FoodImage from "../FoodImage/FoodImage";
 import style from "./FoodGrid.module.scss";
 
 type FoodGridProps = {
-  foodList: Array<string>;
-  onSelect?: (url: string) => void;
-  selected?: string | null;
+  foodList: Array<{ strMealThumb: string; strMeal: string; }>;
+  onSelect?: (image: { strMealThumb: string; strMeal: string; }) => void;
+  selected?: { strMealThumb: string; strMeal: string } | null;
 };
 
 const FoodGrid: React.FC<FoodGridProps> = ({
@@ -14,12 +14,13 @@ const FoodGrid: React.FC<FoodGridProps> = ({
 }) => {
   return (
     <div className={style.grid}>
-      {foodList.map((src, index) => (
+      {foodList.map((data, index) => (
         <FoodImage
           key={index}
-          src={src}
-          onClick={() => onSelect && onSelect(src)}
-          isSelected={selected === src}
+          src={data.strMealThumb}
+          alt={data.strMeal}
+          onClick={() => onSelect && onSelect(data)}
+          isSelected={selected?.strMealThumb === data.strMealThumb}
         />
       ))}
     </div>

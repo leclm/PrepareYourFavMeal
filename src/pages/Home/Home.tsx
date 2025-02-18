@@ -12,9 +12,12 @@ const categories = [
 
 const Home: React.FC = () => {
   const [step, setStep] = useState(0);
-  const [imagesUrls, setImagesUrls] = useState<string[]>([]);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [selectedImages, setSelectedImages] = useState<string[]>([]);
+  const [imagesInfo, setImagesInfo] = useState<Array<{
+    strMealThumb: string;
+    strMeal: string;
+  }>>([]);
+  const [selectedImage, setSelectedImage] = useState<{ strMealThumb: string; strMeal: string } | null>(null);
+  const [selectedImages, setSelectedImages] = useState<Array<{ strMealThumb: string; strMeal: string }>>([]);
   const [loading, setLoading] = useState(true);
 
   const fetchImages = (categorie: string) => {
@@ -27,9 +30,12 @@ const Home: React.FC = () => {
         const shuffledImages = meals
           .sort(() => Math.random() - 0.5)
           .slice(0, 6)
-          .map((meal: { strMealThumb: string }) => meal.strMealThumb);
+          .map((meal: { strMealThumb: string; strMeal: string }) => ({
+            strMealThumb: meal.strMealThumb,
+            strMeal: meal.strMeal,
+          }));
 
-        setImagesUrls(shuffledImages);
+        setImagesInfo(shuffledImages);
       })
       .catch((error) => console.error("Error:", error))
       .finally(() => {
@@ -43,13 +49,13 @@ const Home: React.FC = () => {
     }
   }, [step]);
 
-  const handleSelectImage = (src: string) => {
-    setSelectedImage(src);
+  const handleSelectImage = (image: { strMealThumb: string; strMeal: string }) => {
+    setSelectedImage(image);
   };
 
   const handleNextStep = () => {
     if (selectedImage) {
-      setSelectedImages((prev) => [...prev, selectedImage]);
+      setSelectedImages((prev) => [...prev, selectedImage!]);
       setSelectedImage(null);
       setStep((prev) => prev + 1);
     }
@@ -68,7 +74,7 @@ const Home: React.FC = () => {
               Choose your fav dish from the •{categories[step]}• section
             </h3>
             <FoodGrid
-              foodList={imagesUrls}
+              foodList={imagesInfo}
               onSelect={handleSelectImage}
               selected={selectedImage}
               data-testid="grid"

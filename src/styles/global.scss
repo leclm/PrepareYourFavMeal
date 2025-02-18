@@ -3,7 +3,7 @@
 
 #root {
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 20px auto;
   text-align: center;
 }
 
@@ -11,15 +11,17 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: $white;
+  background: linear-gradient(180deg, $deep-purple 50%, $purple 100%);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#App {
+  background-color: rgba($light-purple, 0.4);
 }
 
 body {
@@ -30,24 +32,43 @@ body {
 }
 
 h1 {
-  font-size: 1.8em;
+  font-size: 2rem;
   line-height: 1.1;
-  color: $active;
+  color: $white;
+  text-shadow: $blue 10px 10px 15px;
 }
 
 h2 {
-  font-size: 0.9em;
+  font-size: 1.75rem;
   line-height: 1.1;
-  color: $gray;
+  color: $white;
+  margin-bottom: 40px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.1;
+  color: $white;
+}
+
+p {
+  font-size: 0.875rem;
 }
 
 @media screen and (min-width: $medium) {
   h1 {
-    font-size: 4.5em;
+    font-size: 3rem;
   }
 
   h2 {
-    font-size: 1.8em;
+    font-size: 2.5rem;
   }
-  
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
 }
