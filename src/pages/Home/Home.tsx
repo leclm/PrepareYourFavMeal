@@ -84,6 +84,7 @@ const Home: React.FC = () => {
               text={"Show me the next delicious option"}
               disabled={!selectedImage}
               onClick={() => handleNextStep()}
+              tabIndex={0}
             />
           </>
         )
