@@ -23,8 +23,19 @@
 
 <h2 align="center">Preview 💻</h2>
 
+Take a look here: [Prepare Your Fav Meal](https://prepare-your-fav-meal.vercel.app/)
+
 <p align="center">
-   <img src="public/desk.png" width="90%" alt="Prepare Your Fav Meal Demo"/>
+  <table>
+    <tr>
+      <td>
+        <img src="public/desktop.png" width="100%" alt="Prepare Your Fav Meal Demo Desktop"/>
+      </td>
+      <td>
+        <img src="public/mobile.png" width="100%" alt="Prepare Your Fav Meal Demo Mobile"/>
+      </td>
+    </tr>
+  </table>
 </p>
 
 ---
@@ -36,6 +47,8 @@
 - [Vite](https://vitejs.dev/)
 - [SCSS](https://sass-lang.com/)
 - [Jest](https://jestjs.io/)
+- [TheMealDB API](https://www.themealdb.com/api.php?ref=apilist.fun)
+- [Vercel](https://vercel.com/)
 
 ---
 
